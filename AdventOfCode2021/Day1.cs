@@ -13,16 +13,19 @@ namespace AdventOfCode2021
 
         public static void Day1Part1Calculator()
         {
-            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxt("Day1");
+            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxtInt("Day1","Day1");
 
             Console.WriteLine(todaysInputData.Where((x, i) => i > 0 && x > todaysInputData[i - 1]).ToList().Count.ToString());
             Console.WriteLine(todaysInputData.Where((x, i) => i > 2 && x > todaysInputData[i - 3]).ToList().Count.ToString());
 
         }
 
+
+        
+
         public static void Day1Part2Calculator()
         {
-            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxt("Day1");
+            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxtInt("Day1","Day1");
 
             /* Console.WriteLine(todaysInputData.Select((x, i) =>
             i < todaysInputData.Count - 3 &&
@@ -42,5 +45,7 @@ namespace AdventOfCode2021
              
 
         }
+
+
     }
 }
