@@ -50,7 +50,6 @@ namespace AdventOfCode2021
                     if(filteredListOGR.Count == 1)
                     {
                         ogr = Convert.ToInt32(filteredListOGR[0], 2);
-                        
                     }
                 }
 
@@ -68,12 +67,10 @@ namespace AdventOfCode2021
 
         public static List<string> FilterList(List<string> todaysInputData, int i, string ogrOrcsr)
         {
-           
             int nrOf1 = todaysInputData.Where(x => x[i].Equals('1')).ToList().Count;
             int nrOf0 = todaysInputData.Where(x => x[i].Equals('0')).ToList().Count;
-            int nrOfBits = todaysInputData.Count;
 
-            if (nrOf1 > nrOf0) // Fler 1:or än 0:or
+            if (nrOf1 > nrOf0 || nrOf1 == nrOf0) 
             {
                 switch (ogrOrcsr)
                 {
@@ -81,30 +78,14 @@ namespace AdventOfCode2021
                     default: return todaysInputData.Where(x => x[i].Equals('0')).ToList();
                 }
             }
-            else if (nrOf1 < nrOf0)
+            else 
             {
-
                 switch (ogrOrcsr)
                 {
                     case "ogr": return todaysInputData.Where(x => x[i].Equals('0')).ToList();
                     default: return todaysInputData.Where(x => x[i].Equals('1')).ToList();
                 }
             }
-            else 
-            {
-                if (ogrOrcsr == "ogr")
-                {
-                    return todaysInputData.Where(x => x[i].Equals('1')).ToList();
-                }
-                else
-                {
-                    return todaysInputData.Where(x => x[i].Equals('0')).ToList();
-                }
-            }
         }
-
-
-
-
     }
 }
