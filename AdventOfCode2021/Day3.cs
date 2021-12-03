@@ -72,18 +72,24 @@ namespace AdventOfCode2021
 
             if (nrOf1 > nrOf0 || nrOf1 == nrOf0) 
             {
-                switch (ogrOrcsr)
+                if (ogrOrcsr == "ogr")
                 {
-                    case "ogr": return todaysInputData.Where(x => x[i].Equals('1')).ToList();
-                    default: return todaysInputData.Where(x => x[i].Equals('0')).ToList();
+                    return todaysInputData.Where(x => x[i].Equals('1')).ToList();
                 }
+                else
+                {
+                    return todaysInputData.Where(x => x[i].Equals('0')).ToList();
+                }              
             }
             else 
             {
-                switch (ogrOrcsr)
+                if (ogrOrcsr == "ogr")
                 {
-                    case "ogr": return todaysInputData.Where(x => x[i].Equals('0')).ToList();
-                    default: return todaysInputData.Where(x => x[i].Equals('1')).ToList();
+                    return todaysInputData.Where(x => x[i].Equals('0')).ToList();
+                }
+                else
+                {
+                    return todaysInputData.Where(x => x[i].Equals('1')).ToList();
                 }
             }
         }
