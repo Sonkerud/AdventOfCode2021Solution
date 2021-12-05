@@ -59,7 +59,8 @@ namespace AdventOfCode2021
             List<int> boardsWithBingo = new List<int>();
             while (number < bingoNumbers.Split(",").Length && !bingo)
             {
-                int bingoNumber = int.Parse(bingoNumbers.Split(",")[number]);
+                //Lägg ut ett nummer i taget på alla bräden.
+                int bingoNumber = int.Parse(bingoNumbers.Split(",")[number]);  
                 for (int p = 0; p < boards.Count; p++)
                 {
                     for (int i = 0; i < 5; i++)
@@ -74,6 +75,7 @@ namespace AdventOfCode2021
                     }
                 }
                 
+                //Scanna alla bräden efter bingo
                 for (int p = 0; p < boards.Count; p++)
                 {
                     List<int> allNumbersInCurrentBoard = new List<int>();
@@ -89,6 +91,7 @@ namespace AdventOfCode2021
                                 hitNumbersInCurrentBoard.Add(boards[p][i, y].Number);
                             }
                         }
+                        //Om bingo y-led, skriv ut brädan och lägg brädan i listan med de som haft bingo
                         if (boards[p][i, 0].Hit
                          && boards[p][i, 1].Hit
                          && boards[p][i, 2].Hit
@@ -100,11 +103,11 @@ namespace AdventOfCode2021
                             int sum = notHitNumbers.Sum();
                             Console.WriteLine($"BoardNr: {p} NumberOfNumbers: {number} Sum: {sum} LastNumber: {bingoNumber} Answer: {sum * bingoNumber}");
                             boardsWithBingo.Add(p);
-                            //bingo = true; 
                         }
                     }
                     for (int y = 0; y < 5; y++)
                     {
+                        //Om bingo x-led, skriv ut brädan och lägg brädan i listan med de som haft bingo
                         if (boards[p][0,y].Hit
                          && boards[p][1,y].Hit
                          && boards[p][2,y].Hit
@@ -119,6 +122,7 @@ namespace AdventOfCode2021
                         }
                     }
                 }
+                //Gå till nästa nummer
                  number++;
             }
         }
