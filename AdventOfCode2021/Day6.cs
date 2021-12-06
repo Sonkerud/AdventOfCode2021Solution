@@ -14,6 +14,12 @@ namespace AdventOfCode2021
             List<long> fishList = new List<long> { 0, 0, 0, 0, 0, 0, 0, 0,0 };
             List<long> tempfishList = new List<long> {0,0,0,0,0,0,0,0,0};
 
+            foreach (var item in todaysInputData)
+            {
+                fishList[item]++;
+                tempfishList[item]++;   
+            }
+
             for (int i = 0; i < 256; i++)
             {
                 for (int y = 1; y < fishList.Count(); y++)
@@ -23,6 +29,7 @@ namespace AdventOfCode2021
                 }
                 tempfishList[6] += fishList[0];
                 tempfishList[8] += fishList[0];
+
                 fishList = fishList.Select((x, i) => x = tempfishList[i]).ToList();
             }
             Console.WriteLine(fishList.Sum());
