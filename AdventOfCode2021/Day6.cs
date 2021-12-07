@@ -22,6 +22,7 @@ namespace AdventOfCode2021
 
             for (int i = 0; i < 256; i++)
             {
+               
                 for (int y = 1; y < fishList.Count(); y++)
                 {
                     tempfishList[y-1] = fishList[y];
