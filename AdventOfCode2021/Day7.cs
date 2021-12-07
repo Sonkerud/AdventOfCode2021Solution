@@ -10,31 +10,23 @@ namespace AdventOfCode2021
     {
         public static void Day7Calculator(bool isPart2)
         {
-            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxtString("Day7", "Day7")[0].Split(",").Select(x => int.Parse(x)).ToList();
+            var todaysInputData = AdventOfCode2021.Inputreader.ReadTxtString("Day7", "Day7test")[0].Split(",").Select(x => int.Parse(x)).ToList();
 
             long minFuel = long.MaxValue;
+
             //Loop through every possible horizontal position
             for (int i = todaysInputData.Min(); i <= todaysInputData.Max(); i++)
             {
-                long fuelCount = 0;
-                long fuelCountPart2 = 0;
-                long fuelCountPart2Answer = 0;
+                long fuelCount = 0, fuelCountPart2 = 0, fuelCountPart2Answer = 0;
 
                 //Count the amount of fuel needed for every crab
                 for (int y = 0; y < todaysInputData.Count; y++)
                 {
                     fuelCountPart2 = 0;
 
-                    if (todaysInputData[y] < i) 
-                    {
-                        fuelCount += i - todaysInputData[y];
-                        fuelCountPart2 += i - todaysInputData[y];
-                    }
-                    else if (todaysInputData[y] > i)
-                    {
-                        fuelCount += todaysInputData[y] - i;
-                        fuelCountPart2 += todaysInputData[y] - i;
-                    }
+                    fuelCount += Math.Abs(i - todaysInputData[y]);
+                    fuelCountPart2 += Math.Abs(i - todaysInputData[y]);
+
                     //Part2 add extra fuel
                     for (int o = 1; o <= fuelCountPart2; o++)
                     {
@@ -42,7 +34,7 @@ namespace AdventOfCode2021
                     }
                 }
 
-                //Set correct answer
+                //Set correct answer              
                 if (isPart2)
                 {
                     if (fuelCountPart2Answer < minFuel)
@@ -50,7 +42,7 @@ namespace AdventOfCode2021
                         minFuel = fuelCountPart2Answer;
                     }
                 }
-                else 
+                else
                 {
                     if (fuelCount < minFuel)
                     {
@@ -60,5 +52,22 @@ namespace AdventOfCode2021
             }
             Console.WriteLine(minFuel);
         }
+        //long Day7_2(string input)
+        //{
+        //    var positions = AdventOfCode2021.Inputreader.ReadTxtString("Day7", "Day7test")[0].Split(",").Select(x => int.Parse(x)).ToList();
+
+        //    return FuelCosts().Min();
+
+        //    IEnumerable<long> FuelCosts()
+        //    {
+        //        var start = positions.Min();
+        //        var count = positions.Max() - start + 1;
+
+        //        return Enumerable.Range(start, count).Select(pos => positions.Sum(x => SumOfN(Math.Abs(pos - x))));
+        //    }
+        //    //long FuelCost(int pos) => positions.Sum(x => SumOfN(Math.Abs(pos - x)));
+
+        //    long SumOfN(long n) => n * (n + 1) / 2;
+        //} 
     }
 }
