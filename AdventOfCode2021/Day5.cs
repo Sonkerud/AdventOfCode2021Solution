@@ -11,7 +11,7 @@ namespace AdventOfCode2021
 
         public static void Day5Part1Calculator()
         {
-            var todaysInput = AdventOfCode2021.Inputreader.ReadTxtString("Day5", "Day5")
+            var todaysInput = AdventOfCode2021.Inputreader.ReadTxtString("Day5", "Day5test")
                     .Select(x => { return x.ToString().Replace(" -> ", ","); }).ToList()
                     .Select(x => x.ToString().Split(",")
                     .Select(x => int.Parse(x)).ToArray()).ToList();
