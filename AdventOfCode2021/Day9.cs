@@ -168,7 +168,7 @@ namespace AdventOfCode2021
                 {
                     if (todaysInputDataArray[y, x + k] != 9)
                     {
-                        countOfBasins++;
+                        
                         var testDepth = new int[] { y, x + k };
 
                         if (!newdepthArray.Any(intarr => intarr[0] == testDepth[0] && intarr[1] == testDepth[1]))
