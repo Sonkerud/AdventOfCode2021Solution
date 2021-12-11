@@ -23,7 +23,6 @@ namespace AdventOfCode2021
                 }
             }
 
-
             for (int y = 0; y < todaysInputData.Count; y++)
             {
                 for (int x = 0; x < todaysInputData[y].Length; x++)
@@ -114,15 +113,12 @@ namespace AdventOfCode2021
             }
             var newResultlist = resultlist.OrderByDescending(x => x).ToArray();
             Console.WriteLine(newResultlist[0] * newResultlist[1] * newResultlist[2]);
-
         }
 
         public static int Part2_1(List<string> todaysInputData, int[,] todaysInputDataArray, List<int> depth, List<int[]> depthArray, int hX, int hY)
         {
-
             List<int[]> newdepthArray = new List<int[]>();
             newdepthArray.Add(new int[] { hY, hX });
-            int countOfBasins = 0;
             int depthX = 0;
             int depthY = 0;
 
@@ -164,9 +160,6 @@ namespace AdventOfCode2021
                     break;
                 }
             }
-
-            countOfBasins += newdepthArray.Count;
-
             
                 int x = newdepthArray[p][1];
                 int y = newdepthArray[p][0];
@@ -182,13 +175,11 @@ namespace AdventOfCode2021
                         {
                             newdepthArray.Add(new int[] { y, x + k });
                         }
-
                     }
                     else
                     {
                         break;
                     }
-
                 }
                 for (int k = x -1; k >= 0; k--)
                 {
@@ -204,103 +195,9 @@ namespace AdventOfCode2021
                     {
                         break;
                     }
-
                 }
-               
-
             }
             return newdepthArray.Count;
-
-            
-
-        }
-            
-
-            public static void Part2(List<string> todaysInputData, int[,] todaysInputDataArray, List<int> depth, List<int[]> depthArray, int depthX, int depthY)
-             {
-            List<int[]> newdepthArray = new List<int[]>();
-            newdepthArray.Add(new int[] {depthX,depthY});
-
-            while (true)
-            {
-                for (int i = 0; i < newdepthArray.Count(); i++)
-                {
-                    int y = newdepthArray[i][0];
-                    int x = newdepthArray[i][1];
-
-                
-
-                if (y == 0 && x == 0)
-                {
-                    if (todaysInputDataArray[y + 1, x] == todaysInputDataArray[y, x] - 1)
-                    {
-                        newdepthArray.Add(new int[] { y + 1, x });
-                    }
-                    if (todaysInputDataArray[y, x + 1] == todaysInputDataArray[y, x] - 1)
-                    {
-                        newdepthArray.Add(new int[] { y, x + 1 });
-                    }
-                }
-                else if (y == 0 && x == todaysInputData[y].Length - 1)
-                {
-                    if (todaysInputDataArray[y + 1, x] == todaysInputDataArray[y, x] - 1 && todaysInputDataArray[y, x - 1] == todaysInputDataArray[y, x] -1)
-                    {
-                            newdepthArray.Add(new int[] { y + 1, x });
-                        }
-                }
-                else if (y == 0)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y + 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x + 1] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x - 1])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-
-                else if (y == todaysInputData.Count - 1 && x == todaysInputData[y].Length - 1)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x - 1])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-                else if (y == todaysInputData.Count - 1 && x == 0)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x + 1])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-                else if (y == todaysInputData.Count - 1)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x - 1] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x + 1])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-                else if (x == todaysInputData[y].Length - 1)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y + 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x - 1] && todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-
-                else if (x == 0)
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y + 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x + 1] && todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-                else
-                {
-                    if (todaysInputDataArray[y, x] < todaysInputDataArray[y + 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x + 1] && todaysInputDataArray[y, x] < todaysInputDataArray[y - 1, x] && todaysInputDataArray[y, x] < todaysInputDataArray[y, x - 1])
-                    {
-                        depth.Add(todaysInputDataArray[y, x] + 1);
-                    }
-                }
-                }
-            }
         }
     }
 }
