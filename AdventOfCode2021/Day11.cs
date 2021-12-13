@@ -21,7 +21,7 @@ namespace AdventOfCode2021
             }
             
             long nrOfFlashes = 0;
-            for (int df = 0; df < 100; df++)
+            for (int df = 0; df < 2000; df++)
             {
                 List<int[]> tens = new List<int[]>();
 
@@ -97,7 +97,17 @@ namespace AdventOfCode2021
                         }
                     }
                 }
+               
+                
                 nrOfFlashes += tens.Count();
+                
+
+
+                if(tens.Count() == 100)
+                {
+                    Console.WriteLine($"Part 2 after {df + 1} steps");
+                    break;
+                }
             }
             Console.WriteLine(nrOfFlashes);
         }
