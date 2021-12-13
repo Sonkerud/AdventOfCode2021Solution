@@ -119,6 +119,7 @@ namespace AdventOfCode2021
         {
             List<int[]> newdepthArray = new List<int[]>();
             newdepthArray.Add(new int[] { hY, hX });
+            
             int depthX = 0;
             int depthY = 0;
 
